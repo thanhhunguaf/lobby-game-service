@@ -1,0 +1,29 @@
+version: "3"
+services:
+  lobby:
+    build:
+      context: ./
+      dockerfile: ./lobby.dockerfile
+    restart: unless-stopped
+    environment:
+    - DEBUG=info:*,error:*
+    - NAME=lobby
+    - PORT=3007
+    - RBMQ_PLATFORM_HOST=
+    - RBMQ_PLATFORM_EXCHANGE=
+    - RBMQ_PLATFORM_QUEUE=
+    - RBMQ_PLATFORM_ROUTER=
+    - CAS_API_HOST=
+    - MONGO_URI=
+    - REDIS_URL=
+    - MYSQL_HOST=
+    - MYSQL_PORT=
+    - MYSQL_USERNAME=
+    - MYSQL_PASSWORD=
+    - MYSQL_DBNAME=
+    ports:
+    - "3007:3007"
+networks:
+  default:
+    external:
+      name: ace_bridge
